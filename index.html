@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Личный кабинет с авторизацией через Supabase">
+  <title>MySpace — личный кабинет</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Supabase JS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a href="#" class="brand">
+      <span class="brand-icon">✦</span>
+      MySpace
+    </a>
+    <span class="connection-status">
+      <span class="status-dot"></span>
+      Supabase
+    </span>
+  </header>
+
+  <main class="container">
+    <section id="auth-section" class="auth-layout">
+      <div class="intro">
+        <div class="eyebrow">ВАШЕ ПРОСТРАНСТВО</div>
+        <h1>Всё важное<br>в одном <span>месте.</span></h1>
+        <p>
+          Войдите в аккаунт или создайте новый,
+          чтобы получить доступ к личному кабинету.
+        </p>
+        <div class="feature-list">
+          <div class="feature">
+            <span class="feature-icon">✓</span>
+            Безопасная авторизация
+          </div>
+          <div class="feature">
+            <span class="feature-icon">✓</span>
+            Ваш персональный профиль
+          </div>
+          <div class="feature">
+            <span class="feature-icon">✓</span>
+            Доступ с любого устройства
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-card">
+        <div class="tabs">
+          <button id="login-tab" class="tab active" type="button">
+            Вход
+          </button>
+          <button id="register-tab" class="tab" type="button">
+            Регистрация
+          </button>
+        </div>
+
+        <div class="card-heading">
+          <h2 id="form-title">С возвращением!</h2>
+          <p id="form-description">Введите данные своего аккаунта.</p>
+        </div>
+
+        <form id="auth-form">
+          <div class="field">
+            <label for="email">Электронная почта</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="password">Пароль</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Минимум 6 символов"
+              minlength="6"
+              autocomplete="current-password"
+              required
+            >
+          </div>
+
+          <div id="confirm-field" class="field hidden">
+            <label for="confirm-password">Повторите пароль</label>
+            <input
+              id="confirm-password"
+              name="confirm-password"
+              type="password"
+              placeholder="Введите пароль ещё раз"
+              minlength="6"
+              autocomplete="new-password"
+            >
+          </div>
+
+          <div id="message" class="message hidden" role="status"
+               aria-live="polite"></div>
+
+          <button id="submit-button" class="primary-button" type="submit">
+            Войти в аккаунт
+            <span aria-hidden="true">→</span>
+          </button>
+        </form>
+
+        <p class="terms">
+          Ваши данные обрабатываются через Supabase.
+        </p>
+      </div>
+    </section>
+
+    <section id="dashboard-section" class="dashboard hidden">
+      <div class="dashboard-header">
+        <div>
+          <div class="eyebrow">ЛИЧНЫЙ КАБИНЕТ</div>
+          <h1>Добро пожаловать!</h1>
+          <p class="muted">Вы успешно вошли в систему.</p>
+        </div>
+        <button id="logout-button" class="secondary-button" type="button">
+          <span aria-hidden="true">↗</span> Выйти
+        </button>
+      </div>
+
+      <div class="welcome-card">
+        <div class="avatar" id="user-avatar">U</div>
+        <div class="welcome-info">
+          <span class="muted">Вы вошли как</span>
+          <h2 id="user-email">user@example.com</h2>
+          <span class="account-badge">
+            <span class="status-dot"></span>
+            Аккаунт активен
+          </span>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <article class="info-card">
+          <div class="info-icon purple">◎</div>
+          <p class="muted">Статус</p>
+          <h3>Активен</h3>
+          <p class="card-caption">Вы авторизованы</p>
+        </article>
+
+        <article class="info-card">
+          <div class="info-icon blue">✉</div>
+          <p class="muted">Электронная почта</p>
+          <h3>Ваш аккаунт</h3>
+          <p class="card-caption">Данные Supabase Auth</p>
+        </article>
+
+        <article class="info-card">
+          <div class="info-icon green">⌘</div>
+          <p class="muted">Безопасность</p>
+          <h3>Supabase</h3>
+          <p class="card-caption">Управление сессией</p>
+        </article>
+      </div>
+
+      <div class="notice">
+        <span class="notice-icon">i</span>
+        <div>
+          <strong>Ваш кабинет готов к работе</strong>
+          <p>
+            Это базовая версия. Для хранения профилей и пользовательских
+            данных можно дополнительно подключить таблицы базы данных.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© 2026 MySpace</span>
+      <span>Создано с Supabase</span>
+    </footer>
+  </main>
+</body>
+</html>
